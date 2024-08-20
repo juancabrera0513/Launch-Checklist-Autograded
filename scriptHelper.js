@@ -1,6 +1,6 @@
 // Write your helper functions here!
 
-require("cross-fetch/polyfill");
+// require("cross-fetch/polyfill");
 
 function addDestinationInfo(
   document,
@@ -88,22 +88,26 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 async function myFetch() {
   let planetsReturned;
 
-  planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {
-    return (function(response){
-        response.json()
-    })
+  planetsReturned = await fetch(
+    "https://handlers.education.launchcode.org/static/planets.json"
+  ).then(function (response) {
+    return response.json;
   });
 
   return planetsReturned;
 }
 
 function pickPlanet(planets) {
-    let randomIndex = Math.floor(Math.random() * planets.length);
-    return planets[randomIndex];
+  let randomIndex = Math.floor(Math.random() * planets.length);
+  return planets[randomIndex];
 }
+
+
 
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
 module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet;
 module.exports.myFetch = myFetch;
+
+
