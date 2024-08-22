@@ -51,11 +51,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     validateInput(cargoLevel) === "Empty"
   ) {
     alert("All fields are required!");
+    return
   }
 
   if (
-    validateInput(pilot) === "Not a Number" &&
-    validateInput(copilot) === "Not a Number"
+    validateInput(pilot) === "Not a Number" && validateInput(copilot) === "Not a Number"
+    
   ) {
     document.getElementById(
       "pilotStatus"
@@ -63,7 +64,19 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     document.getElementById(
       "copilotStatus"
     ).innerHTML = `Co-pilot ${copilot} is ready for launch`;
+  } else {
+    alert ("Pilot and Co-pilot names must be text.")
   }
+  
+   if (validateInput(fuelLevel) === "Is a Number" && validateInput(cargoLevel) === "Is a Number"){
+    
+   } else{
+    alert ("Fuel and Cargo mass must be a number.")
+    return
+   }
+
+  
+
 
   if (fuelLevel < 10000) {
     document.getElementById("faultyItems").style.visibility = "visible";
