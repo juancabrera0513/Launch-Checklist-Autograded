@@ -23,14 +23,13 @@ function addDestinationInfo(
                          <li>Distance from Earth: ${distance} </li>
                          <li>Number of Moons: ${moons} </li>
                      </ol>
-                     <img src=${image}>
-        
+                     <img src=${image}>`   
 
 
   
   
   
-  `
+  
 };
 
 function validateInput(testInput) {
@@ -45,38 +44,37 @@ function validateInput(testInput) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   if (
-    validateInput(pilot) === "Empty" ||
-    validateInput(copilot) === "Empty" ||
+    validateInput(pilot) === "Empty"  || 
+    
+
+    validateInput(copilot) === "Empty" || 
+
     validateInput(fuelLevel) === "Empty" ||
+
+
     validateInput(cargoLevel) === "Empty"
+
   ) {
     alert("All fields are required!");
     return
   }
 
   if (
-    validateInput(pilot) === "Not a Number" && validateInput(copilot) === "Not a Number"
-    
+    validateInput(pilot) === "Is a Number" || 
+    validateInput(copilot) === "Is a Number"
   ) {
-    document.getElementById(
-      "pilotStatus"
-    ).innerHTML = `Pilot ${pilot} is ready for launch`;
-    document.getElementById(
-      "copilotStatus"
-    ).innerHTML = `Co-pilot ${copilot} is ready for launch`;
+    alert("Pilot and Co-pilot names must be text.");
+    return;
   } else {
-    alert ("Pilot and Co-pilot names must be text.")
+    document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
+    document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
+  }
+
+  if (isNaN(fuelLevel) || isNaN(cargoLevel)) {
+    alert("Fuel and Cargo mass must be a number.");
+    return;
   }
   
-   if (validateInput(fuelLevel) === "Is a Number" && validateInput(cargoLevel) === "Is a Number"){
-    
-   } else{
-    alert ("Fuel and Cargo mass must be a number.")
-    return
-   }
-
-  
-
 
   if (fuelLevel < 10000) {
     document.getElementById("faultyItems").style.visibility = "visible";

@@ -9,10 +9,11 @@ window.addEventListener("load", function () {
 
   const form = document.querySelector("form");
   form.addEventListener("submit", function(event) {
-    const pilot = document.getElementById("pilotName").value;
-    const copilot = document.querySelector("input[name=copilotName]").value;
-    const fuelLevel = Number(document.querySelector("input[name=fuelLevel]").value);
-    const cargoLevel = Number(document.querySelector("input[name=cargoMass]").value);
+    const pilot = document.getElementById("pilotName").value.trim();
+    const copilot = document.querySelector("input[name=copilotName]").value.trim();
+    const fuelLevel = Number(document.querySelector("input[name=fuelLevel]").value.trim());
+    const cargoLevel = Number(document.querySelector("input[name=cargoMass]").value.trim());
+    
     
     formSubmission(document, listedPlanets, pilot, copilot, fuelLevel, cargoLevel);
     event.preventDefault()
